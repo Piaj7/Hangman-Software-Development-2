@@ -8,5 +8,16 @@ The game allows two players to participate in the same Hangman session. One play
 The project was developed following an Agile, iterative approach, with regular testing and refinement throughout development.
 
 ## 2. Breakdown
-Everything in this project has been done by myself alone, eventhough it is a group project I wanted to challeneg myself and work alone to see how much I could push myself and achieve and learn.
+Everything in this project has been done by myself alone, eventhough it is a group project I wanted to challenge myself and work alone to see how much I could push myself and achieve and learn.
 Everything from planning, implementation, ReadMe file, and evalutation has been done by myself.
+
+## 3. Target Audience
+### Primary Target Audience:
+
+Casual mobile gamers aged 13-25 who enjoy, a simple, straight forward word game.
+
+The game is designed to be:
+* Easy to understand
+* Quick to play
+* Accessible on mobile devices
+* Playable for anyone regardless of gaming skills
