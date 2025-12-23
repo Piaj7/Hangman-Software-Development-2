@@ -61,3 +61,17 @@ The system must:
 * The game ends when:
   * All letters are guessed (win), or
   * The maximum number of wrong guesses is reached (lose).
+
+## 8. Development Strategy
+An Agile Development Strategy was used for this project.
+
+### Advantages
+* Allowed constant testing and spotting bugs
+* Allowed for iterative improvements of various features
+* Allows for flexibility to simulatneously work on other tasks for the project.
+
+### Disadvantages
+* A lot of the features had to be simplified due to time constraints and difficulty as I am alone
+* Effective when working with a team, however I have developed this whole project myself
+
+However, Agile was suitable for this small-scale project and helped ensure a working product was created and submitted on time.
