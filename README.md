@@ -1,5 +1,5 @@
-# Hangman-Software-Development-2
-A multi-player hangman game for a University of Hertfordshire, Software Development assignment.
+# Hangman Software Development 2
+A multi-player hangman game for University of Hertfordshire, Software Development assignment.
 
 ## 1. Project Overview
 This project is a mobile-focused, multiplayer Hangman game developed as part of the Software Development 01 module. The aim of the project was to design and implement a simple but complete game application using appropriate software development tools, techniques, and methodologies.
@@ -30,10 +30,12 @@ The game is designed to be:
 ### User Profile 2
 <img width="1536" height="1024" alt="User Profile 2 Michael Rosen" src="https://github.com/user-attachments/assets/f00ad5f6-04ab-4eed-aef8-ce4f8bd263e4" />
 
-## 5. User requirements
+## 5. User Requirements
 Users MUST be able to:
 * Start or join a multiplayer game
 * Guess letters using an on-screen interface
 * Clearly display guessed letters and remaining attempts
 * Indicate when the player has won or lost the game
 * Work on mobile devices and fit the screen properly
+
+## 6. System Requirements
