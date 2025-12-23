@@ -30,3 +30,10 @@ The game is designed to be:
 ### User Profile 2
 <img width="1536" height="1024" alt="User Profile 2 Michael Rosen" src="https://github.com/user-attachments/assets/f00ad5f6-04ab-4eed-aef8-ce4f8bd263e4" />
 
+## 5. User requirements
+Users MUST be able to:
+* Start or join a multiplayer game
+* Guess letters using an on-screen interface
+* Clearly display guessed letters and remaining attempts
+* Indicate when the player has won or lost the game
+* Work on mobile devices and fit the screen properly
