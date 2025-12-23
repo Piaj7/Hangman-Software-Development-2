@@ -1,5 +1,6 @@
 # Hangman-Software-Development-2
 A multi-player hangman game for a University of Hertfordshire, Software Development assignment.
+
 ## 1. Project Overview
 This project is a mobile-focused, multiplayer Hangman game developed as part of the Software Development 01 module. The aim of the project was to design and implement a simple but complete game application using appropriate software development tools, techniques, and methodologies.
 
@@ -14,10 +15,17 @@ Everything from planning, implementation, ReadMe file, and evalutation has been 
 ## 3. Target Audience
 ### Primary Target Audience:
 
-Casual mobile gamers aged 13-25 who enjoy, a simple, straight forward word game.
+Casual mobile gamers aged 13 and above who enjoy, a simple, straight forward word game.
 
 The game is designed to be:
-* Easy to understand
+* Easy to understand for all age demographics
 * Quick to play
 * Accessible on mobile devices
 * Playable for anyone regardless of gaming skills
+
+## 4. User Profiles
+### User Profile 1
+<img width="1536" height="1024" alt="User Profile 1 Rayyan" src="https://github.com/user-attachments/assets/97703c58-52ae-4316-a47f-924703dd5c0f" />
+
+### User Profile 2
+
