@@ -39,3 +39,16 @@ Users MUST be able to:
 * Work on mobile devices and fit the screen properly
 
 ## 6. System Requirements
+### Functional Requiremnts
+The system must:
+* Support two players in one game session.
+* Randomly select a word for each game.
+* Track correct and incorrect guesses.
+* Manage game states (start, play, win, lose).
+* Synchronise game state between players.
+
+### Non-Functional Requirements
+* The interface must be clear and easy to use.
+* The game must respond quickly to user input.
+* The design must be mobile-friendly.
+* The system should be reliable and stable during gameplay.
