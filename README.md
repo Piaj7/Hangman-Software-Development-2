@@ -28,4 +28,5 @@ The game is designed to be:
 <img width="1536" height="1024" alt="User Profile 1 Rayyan" src="https://github.com/user-attachments/assets/97703c58-52ae-4316-a47f-924703dd5c0f" />
 
 ### User Profile 2
+<img width="1536" height="1024" alt="User Profile 2 Michael Rosen" src="https://github.com/user-attachments/assets/f00ad5f6-04ab-4eed-aef8-ce4f8bd263e4" />
 
