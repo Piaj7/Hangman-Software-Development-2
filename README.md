@@ -52,3 +52,12 @@ The system must:
 * The game must respond quickly to user input.
 * The design must be mobile-friendly.
 * The system should be reliable and stable during gameplay.
+
+## 7. Game Rules & Mechanics
+* Players take turns guessing one letter at a time.
+* Correct guesses reveal letters in the word.
+* Incorrect guesses reduce the number of remaining attempts.
+* Repeated guesses do not affect the game state.
+* The game ends when:
+  * All letters are guessed (win), or
+  * The maximum number of wrong guesses is reached (lose).
