@@ -10,6 +10,7 @@ This project is a multiplayer Hangman game developed during Year 2 of the Comput
 6. [System Requirements](#6-system-requirements)
 7. [Game Rules & Mechanics](#7-game-rules--mechanics)
 8. [Development Strategy](#8-development-strategy)
+9. [Design & Storyboard Mock-ups](#9-design--storyboard-mock-ups)
    
 ## 1. Project Overview
 This project is a mobile-focused, multiplayer Hangman game developed as part of the Software Development 01 module. The aim of the project was to design and implement a simple but complete game application using appropriate software development tools, techniques, and methodologies.
@@ -85,3 +86,7 @@ An Agile Development Strategy was used for this project.
 * Effective when working with a team, however I have developed this whole project myself
 
 However, Agile was suitable for this small-scale project and helped ensure a working product was created and submitted on time.
+
+## 9. Design & Storyboard Mock-ups
+<img width="1536" height="1024" alt="Design" src="https://github.com/user-attachments/assets/3dc81cc9-ec5e-4b3a-92bc-44c482ec3616" />
+
