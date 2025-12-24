@@ -1,6 +1,16 @@
 # Hangman Software Development 2
 This project is a multiplayer Hangman game developed during Year 2 of the Computer Science degree at the University of Hertfordshire as part of a Software Development assignment. It showcases the use of programming fundamentals, game logic, and multiplayer interaction within a structured development process.
 
+## Table of Contents:
+1. [Project Overview](#1-project-overview)
+2. [Breakdown](#2-breakdown)
+3. [Target Audience](#3-target-audience)
+4. [User Profiles](#4-user-profiles)
+5. [User Requirements](#5-user-requirements)
+6. [System Requirements](#6-system-requirements)
+7. [Game Rules & Mechanics](#7-game-rules--mechanics)
+8. [Development Strategy](#8-development-strategy)
+   
 ## 1. Project Overview
 This project is a mobile-focused, multiplayer Hangman game developed as part of the Software Development 01 module. The aim of the project was to design and implement a simple but complete game application using appropriate software development tools, techniques, and methodologies.
 
