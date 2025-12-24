@@ -88,5 +88,8 @@ An Agile Development Strategy was used for this project.
 However, Agile was suitable for this small-scale project and helped ensure a working product was created and submitted on time.
 
 ## 9. Design & Storyboard Mock-ups
-<img width="1536" height="1024" alt="Design" src="https://github.com/user-attachments/assets/3dc81cc9-ec5e-4b3a-92bc-44c482ec3616" />
+<img width="742" height="524" alt="ui-mockup" src="https://github.com/user-attachments/assets/b68bbfa6-bc79-461c-80e8-ee601e968c83" />
+<img width="752" height="405" alt="uml" src="https://github.com/user-attachments/assets/7357c2a6-4e34-4dc0-952f-cb330ac5f507" />
+<img width="788" height="523" alt="storyboar##" src="https://github.com/user-attachments/assets/00382d01-d360-4c99-9039-955b26b05dcf" />
+
 
