@@ -35,3 +35,36 @@ async function guessLetter() {
     const letter = letterInput.value.trim().toLowerCase();
     letterInput.value = "";
     InputDeviceInfo.focus();
+
+    const response = await fetch('/guess', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ letter: letter })
+    });
+
+    if (response.ok) {
+        const err = await response.json().catch(() => ({}));
+        setText("errorMessage", err.error || "Incorrect Guess!");
+    }
+
+    await render();
+}
+
+async function startGame() {
+    await fetch('/start', { method: 'POST' });
+    setText("message", "Game Started! Enter a letter and press Guess!");
+    await render();
+}
+
+document.getElementById("guessButton").addEventListener("click", guessLetter);
+document.getElementById("startButton").addEventListener("click", startGame);
+
+document.getElementById("letterInput").addEventListener("keyup", function(event) {
+    if (event.key === "Enter") {
+        guessLetter();
+    }
+});
+
+render();
