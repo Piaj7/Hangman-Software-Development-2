@@ -76,3 +76,44 @@ body {
     gap: 10px;
 }
 
+input {
+    flex: 1;
+    padding: 12px;
+    font-size: 18px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text);
+    text-transform: uppercase;
+    text-align: center;
+}
+
+button {
+    padding: 12px 20px;
+    font-size: 18px;
+    border-radius: 10px;
+    border: none;
+    background: var(--accent);
+    color: var(--bg);
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button.secondary {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+}
+
+.message {
+    min-height: 20px;
+    margin: 12px 0 0 0;
+    color: var(--muted);
+    text-align: center;
+}
+
+.reveal {
+    margin: 8px 0 0;
+    text-align: center;
+    font-weight: bold;
+}
