@@ -11,6 +11,7 @@ This project is a multiplayer Hangman game developed during Year 2 of the Comput
 7. [Game Rules & Mechanics](#7-game-rules--mechanics)
 8. [Development Strategy](#8-development-strategy)
 9. [Design & Storyboard Mock-ups](#9-design--storyboard-mock-ups)
+10. [Testing](#10-testing)
    
 ## 1. Project Overview
 This project is a mobile-focused, multiplayer Hangman game developed as part of the Software Development 01 module. The aim of the project was to design and implement a simple but complete game application using appropriate software development tools, techniques, and methodologies.
