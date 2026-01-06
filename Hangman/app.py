@@ -1,95 +1,108 @@
-from flask import Flask, render_template, request, jsonify, session 
+from flask import Flask, render_template, request, jsonify, session
 from random import choice
 import string
 
 app = Flask(__name__)
-app.secret_key = 'FayaazHangmanSecretKey'
+app.secret_key = "FayaazHangmanSecretKey"
 
-# List of words to choose from
-WORDS = ['Rayyan', 'Sayf', 'Kalid', 'Fayaaz', 'MK', 'Daniel',]
-# Maximum attempts allowed
+WORDS = ["RAYYAN", "SAYF", "KALID", "FAYAAZ", "MK", "DANIEL"]
 MAX_ATTEMPTS = 6
 
+
 def new_game_state():
-    word = choice(WORDS).upper()
+    word = choice(WORDS)
     return {
         "word": word,
-        "guessed": [],          # list of letters guessed
+        "guessed": [],
         "attempts_left": MAX_ATTEMPTS,
-        "current_player": 1,    # player 1 starts
-        "status": "PLAYING"     # PLAYING / WIN / LOSE
+        "current_player": 1,
+        "status": "PLAYING"
     }
 
+
 def masked_word(word: str, guessed: list[str]) -> str:
-    return ' '.join([letter if letter in guessed else '_' for letter in word])
+    return " ".join([ch if ch in guessed else "_" for ch in word])
+
 
 def is_winner(word: str, guessed: list[str]) -> bool:
-    return all(letter in guessed for letter in word)
+    return all(ch in guessed for ch in word)
 
-@app.route('/')
+
+@app.route("/")
 def index():
-    if 'game_state' not in session:
-        session['game_state'] = new_game_state()
+    if "game_state" not in session:
+        session["game_state"] = new_game_state()
         session.modified = True
     return render_template("index.html")
 
-@app.route("/api/game_state", methods=['GET'])
+
+@app.route("/api/game_state", methods=["GET"])
 def api_game_state():
-    game_state = session.get('game_state', new_game_state())
-    word_display = masked_word(game_state['word'], game_state['guessed'])
+    game = session.get("game_state", new_game_state())
+    session["game_state"] = game
+    session.modified = True
+
     return jsonify({
-        "word": word_display,
-        "guessed": game_state['guessed'],
-        "attempts_left": game_state['attempts_left'],
-        "current_player": game_state['current_player'],
-        "status": game_state['status']
+        "masked": masked_word(game["word"], game["guessed"]),
+        "guessed": game["guessed"],
+        "attempts_left": game["attempts_left"],
+        "current_player": game["current_player"],
+        "status": game["status"]
     })
 
-@app.route("/api/guess", methods=['POST'])
-def api_guess():
-    session.modified = True
+
+@app.route("/api/new", methods=["POST"])
+def api_new():
     session["game_state"] = new_game_state()
-    return jsonify({"ok": True})
-
-@app.route("/api/guess", methods=['POST'])
-def api_make_guess():
-    data = request.json
-    letter = data.get('letter', '').upper()
-    game_state = session.get('game_state', new_game_state())
-
-    if game_state['status'] != "PLAYING":
-        return jsonify({"error": "Game is over"}), 400
-
-    if letter not in string.ascii_uppercase or len(letter) != 1:
-        return jsonify({"error": "Invalid letter"}), 400
-
-    if letter in game_state['guessed']:
-        return jsonify({"error": "Letter already guessed"}), 400
-
-    game_state['guessed'].append(letter)
-
-    if letter not in game_state['word']:
-        game_state['attempts_left'] -= 1
-
-    if is_winner(game_state['word'], game_state['guessed']):
-        game_state['status'] = "WIN"
-    elif game_state['attempts_left'] <= 0:
-        game_state['status'] = "LOSE"
-
-    game_state['current_player'] = 2 if game_state['current_player'] == 1 else 1
-
-    session['game_state'] = game_state
     session.modified = True
-
     return jsonify({"ok": True})
 
-@app.route("/api/reveal", methods=['GET'])
-def api_reveal():
-    """Optional endpoint to reveal the word."""
-    game = session.get('game_state', new_game_state())
-    if game['status'] == "PLAYING":
-        return jsonify({"error": "Game is still in progress"}), 400
-    return jsonify({"word": game['word']})
 
-if __name__ == '__main__':
+@app.route("/api/guess", methods=["POST"])
+def api_guess():
+    game = session.get("game_state", new_game_state())
+
+    if game["status"] != "PLAYING":
+        return jsonify({"ok": False, "message": "Game is over. Start a new game."}), 400
+
+    data = request.get_json(silent=True) or {}
+    letter = (data.get("letter") or "").upper().strip()
+
+    # validate A-Z single letter
+    if len(letter) != 1 or letter not in string.ascii_uppercase:
+        return jsonify({"ok": False, "message": "Enter one letter A-Z."}), 400
+
+    # ignore duplicate guesses (no penalty)
+    if letter in game["guessed"]:
+        session["game_state"] = game
+        session.modified = True
+        return jsonify({"ok": True, "message": "Already guessed."})
+
+    game["guessed"].append(letter)
+
+    # wrong guess: lose attempt and switch player
+    if letter not in game["word"]:
+        game["attempts_left"] -= 1
+        game["current_player"] = 2 if game["current_player"] == 1 else 1
+
+    # win/lose checks
+    if is_winner(game["word"], game["guessed"]):
+        game["status"] = "WIN"
+    elif game["attempts_left"] <= 0:
+        game["status"] = "LOSE"
+
+    session["game_state"] = game
+    session.modified = True
+    return jsonify({"ok": True})
+
+
+@app.route("/api/reveal", methods=["GET"])
+def api_reveal():
+    game = session.get("game_state", new_game_state())
+    if game["status"] == "PLAYING":
+        return jsonify({"ok": False, "message": "Game still in progress."}), 400
+    return jsonify({"ok": True, "word": game["word"]})
+
+
+if __name__ == "__main__":
     app.run(debug=True)

@@ -1,70 +1,71 @@
 async function getState() {
-    const response = await fetch('/state');
-    return await response.json();
+  const response = await fetch("/api/game_state");
+  return await response.json();
 }
 
 function setText(id, text) {
-    document.getElementById(id).innerText = text;
+  document.getElementById(id).textContent = text;
 }
 
 async function render() {
-    const state = await getState();
+  const state = await getState();
 
-    setText("maskedWord", state.masked);
-    setText("turnPill", `Player Turn: ${state.current_player}`);
-    setText("attemptPill", `Attempts Left: ${state.attempts_left}`);
-    setText("guessedLetters", state.guessed.length ? state.guessed.join(", ") : "None");
-    
-    const messageElement = document.getElementById("message");
-    const revealElement = document.getElementById("revealWord");
-    revealElement.textContent = "";
+  setText("maskedWord", state.masked);
+  setText("turnPill", `Player Turn: ${state.current_player}`);
+  setText("attemptPill", `Attempts Left: ${state.attempts_left}`);
+  setText("guessedLetters", state.guessed.length ? state.guessed.join(", ") : "None");
 
-    if (state.status === "won") {
-        messageElement.innerText = `Congratulations! Player ${state.current_player} has won!`;
-        revealElement.textContent = `The word was: ${state.word}`;
-    } else if (state.status === "lost") {
-        messageElement.innerText = `Game Over! Player ${state.current_player} has lost.`;
-        revealElement.textContent = `The word was: ${state.word}`;
-    } else {
-        messageElement.innerText = "Enter a letter and press Guess!";
-    }
+  const messageEl = document.getElementById("message");
+  const revealEl = document.getElementById("reveal");
+  revealEl.textContent = "";
 
+  if (state.status === "WIN") {
+    messageEl.textContent = `✅ Player ${state.current_player} wins!`;
+    const r = await fetch("/api/reveal");
+    const data = await r.json();
+    revealEl.textContent = `Word: ${data.word}`;
+  } else if (state.status === "LOSE") {
+    messageEl.textContent = "❌ Game over!";
+    const r = await fetch("/api/reveal");
+    const data = await r.json();
+    revealEl.textContent = `Word: ${data.word}`;
+  } else {
+    messageEl.textContent = "Enter a letter and press Guess.";
+  }
 }
+
 async function guessLetter() {
-    const letterInput = document.getElementById("letterInput");
-    const letter = letterInput.value.trim().toLowerCase();
-    letterInput.value = "";
-    InputDeviceInfo.focus();
+  const input = document.getElementById("letterInput");
+  const letter = input.value.trim().toUpperCase();
+  input.value = "";
+  input.focus();
 
-    const response = await fetch('/guess', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ letter: letter })
-    });
+  const response = await fetch("/api/guess", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ letter })
+  });
 
-    if (response.ok) {
-        const err = await response.json().catch(() => ({}));
-        setText("errorMessage", err.error || "Incorrect Guess!");
-    }
+  // If server returns an error, show it
+  if (!response.ok) {
+    const err = await response.json().catch(() => ({}));
+    setText("message", err.message || "Invalid guess.");
+  }
 
-    await render();
+  await render();
 }
 
-async function startGame() {
-    await fetch('/start', { method: 'POST' });
-    setText("message", "Game Started! Enter a letter and press Guess!");
-    await render();
+async function newGame() {
+  await fetch("/api/new", { method: "POST" });
+  setText("message", "New game started.");
+  await render();
 }
 
-document.getElementById("guessButton").addEventListener("click", guessLetter);
-document.getElementById("startButton").addEventListener("click", startGame);
+document.getElementById("guessBtn").addEventListener("click", guessLetter);
+document.getElementById("newBtn").addEventListener("click", newGame);
 
-document.getElementById("letterInput").addEventListener("keyup", function(event) {
-    if (event.key === "Enter") {
-        guessLetter();
-    }
+document.getElementById("letterInput").addEventListener("keydown", (e) => {
+  if (e.key === "Enter") guessLetter();
 });
 
 render();
