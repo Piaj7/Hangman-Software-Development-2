@@ -12,6 +12,8 @@ This project is a multiplayer Hangman game developed during Year 2 of the Comput
 8. [Development Strategy](#8-development-strategy)
 9. [Design & Storyboard Mock-ups](#9-design--storyboard-mock-ups)
 10. [Testing](#10-testing)
+11. [References](#11-references)
+12. [Evaluation](#12-evaluation)
    
 ## 1. Project Overview
 This project is a mobile-focused, multiplayer Hangman game developed as part of the Software Development 01 module. The aim of the project was to design and implement a simple but complete game application using appropriate software development tools, techniques, and methodologies.
@@ -144,6 +146,17 @@ Overall, the system passed all functional tests. The game logic and UI are stabl
 <img width="1740" height="934" alt="Screenshot 2026-01-06 003513" src="https://github.com/user-attachments/assets/c6f7e8a9-3c55-495c-8113-3db4a7be5621" />
 <img width="1718" height="792" alt="Screenshot 2026-01-06 003454" src="https://github.com/user-attachments/assets/61c933ba-58b4-45f2-9b74-82866f5fbff5" />
 
+# 11. References
+
+Flask (n.d.). Welcome to Flask — Flask Documentation (1.1.x). [online] flask.palletsprojects.com. Available at: https://flask.palletsprojects.com/. (Accesssed 24 December 2025)
+
+MDN Contributors (2023). JavaScript. [online] MDN Web Docs. Available at: https://developer.mozilla.org/en-US/docs/Web/javascript. (Accessed 25 December 2025)
+
+University of Hertfordshire (2025) Software Development 01 Module Handbook. Hatfield: University of Hertfordshire.
+
+# 12. Evaluation
+
+Overall I found this project quite challenging, mainly due to the time contraint and time opf year being quite biuys and other assignments to juggle. Also, I took on this assignment by myself eventhough this was a group project. All things considered it went really well and I am proud of myself in my ability to learn the basic skills necessary with help online in order to create a functional game that wokrs and looks good too. One limitation of the project is that the multiplayer functionality is limited to pass-and-play on a single device rather than real-time networked play. Additionally, the word list and visual design could be expanded further to improve replayability and accessibility. However, these limitations were largely due to time constraints and the need to keep the project scope manageable. In conclusion, the project demonstrates effective application of software development principles, including planning, iterative development, testing, and evaluation. The final product meets the specified requirements and provides a stable and enjoyable user experience.
 
 
 
