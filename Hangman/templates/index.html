@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Hangman (2 Player)</title>
 
-  <!-- IMPORTANT: match your css filename -->
+  
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
@@ -18,9 +18,11 @@
     <section class="card">
       <div class="row">
         <div class="pill" id="turnPill">Player Turn: 1</div>
+        <!-- Displays the hangman drawing -->
+        <div class="hangman" id="hangmanStage">0/6</div>
         <div class="pill" id="attemptPill">Attempts Left: 6</div>
       </div>
-
+<!-- Shows the masked word -->
       <div class="word" id="maskedWord">_ _ _ _ _</div>
 
       <div class="guessed">
@@ -28,6 +30,7 @@
         <span id="guessedLetters">None</span>
       </div>
 
+      <!-- Input and buttons for player actions -->
       <div class="controls">
         <input id="letterInput" maxlength="1" inputmode="text" autocomplete="off" placeholder="A" />
         <button id="guessBtn">Guess</button>
@@ -39,7 +42,7 @@
     </section>
   </main>
 
-  <!-- IMPORTANT: match your js filename -->
+
   <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

@@ -1,15 +1,85 @@
+// Maximum number of attempts (must match backend)
+const MAX_ATTEMPTS = 6;
+
+// Fetch the current game state from the backend
 async function getState() {
   const response = await fetch("/api/game_state");
   return await response.json();
 }
 
+
+// Helper function to update text content of an element
 function setText(id, text) {
   document.getElementById(id).textContent = text;
 }
 
+// ASCII representations of the Hangman for each incorrect guess
+const HANGMAN_STAGES = [
+` 
+    
+    
+    
+    
+_____
+`,
+` 
+ |
+ |
+ |
+ |
+_|___
+`,
+`  ______
+ |/
+ |
+ |
+ |
+_|___
+`,
+`  ______
+ |/   |
+ |
+ |
+ |
+_|___
+`,
+`  ______
+ |/   |
+ |    O
+ |
+ |
+_|___
+`,
+`  ______
+ |/   |
+ |    O
+ |    |
+ |
+_|___
+`,
+`  ______
+ |/   |
+ |    O
+ |   /|\\
+ |   / \\
+_|___
+`
+];
+// Updates the hangman drawing based on incorrect guesses
+function setHangmanStage(wrongGuesses) {
+  const stage = Math.max(0, Math.min(6, wrongGuesses));
+  document.getElementById("hangmanStage").textContent = HANGMAN_STAGES[stage];
+}
+
+// Renders the entire game UI based on the current state
 async function render() {
   const state = await getState();
 
+  // Update hangman drawing
+  const wrongGuesses = MAX_ATTEMPTS - state.attempts_left;
+  setHangmanStage(wrongGuesses);
+
+  // Update UI text
   setText("maskedWord", state.masked);
   setText("turnPill", `Player Turn: ${state.current_player}`);
   setText("attemptPill", `Attempts Left: ${state.attempts_left}`);
@@ -33,7 +103,7 @@ async function render() {
     messageEl.textContent = "Enter a letter and press Guess.";
   }
 }
-
+// Sends a guessed letter to the backend
 async function guessLetter() {
   const input = document.getElementById("letterInput");
   const letter = input.value.trim().toUpperCase();
@@ -46,7 +116,6 @@ async function guessLetter() {
     body: JSON.stringify({ letter })
   });
 
-  // If server returns an error, show it
   if (!response.ok) {
     const err = await response.json().catch(() => ({}));
     setText("message", err.message || "Invalid guess.");
